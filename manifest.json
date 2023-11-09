@@ -4,18 +4,19 @@
     "description": "Version 1.0",
     "version": "1.0",
     "action": {
-        "default_icon": "hello_extensions.png"
+        "default_icon": "test_icon.png",
+        "default_title": "Click to open Menu",
+        "default_popup": "/popup/popup.html"
     },
     "permissions": [
         "scripting",
         "activeTab",
-        "webRequest",
-        "webRequestBlocking"
+        "storage"
     ],
     "content_scripts": [
         {
             "matches": ["https://www.irctc.co.in/*"],
-            "js": ["content.js"]
+            "js": ["contentScript.js"]
         }
     ],
     "background": {
