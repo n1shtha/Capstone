@@ -1,0 +1,51 @@
+.btn-primary {
+    background: "red";
+}
+
+.btn-primary-custom {
+    border-radius: 6px;
+    background: #fb792b;
+    color: #fff;
+    border-color: #fb792b;
+    font-size: 1.4rem;
+    border-width: 0px;
+    margin: 5px;
+}
+
+.btn-primary-custom::before, .btn-primary-custom::after {
+    position: absolute;
+    content: "";
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.btn-primary-custom::before {
+    border-width: 8px 6px 0 6px;
+    border-style: solid;
+    border-color: #213d77 transparent transparent;
+    top: -27px;
+    transform: translateY(20px);
+}
+
+.btn-primary-custom::after {
+    content: attr(toolData);
+    background-color: #213d77;
+    width: fit-content;
+    height: fit-content;
+    font-size: 10px;
+    font-weight: 200;
+    top: -75px;
+    left: -10px;
+    padding: 10px;
+    border-radius: 5px;
+    transform: translateY(20px);
+}
+
+.btn-primary-custom:hover:before, .btn-primary-custom:hover:after {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+
+
+
