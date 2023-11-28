@@ -1,181 +1,153 @@
-// Trial to check whether contentScript is persisting across tabs, modifies home page and ticket page
+// The same contentScript will be inserted across all webpages because (in most cases) our element selectors are unique and specific, meaning there won't be any overlap with elements from another page
+// For the above reason, using var (outside of functions) and not const
 
-// Modifies the checkbox options on the homepage to be hidden
+// Creates a button to be appended at the provided location in the document along with the given text
 
-const checkboxOptions = document.querySelector("#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(4)");
+function createButton(text) {
 
-if (checkboxOptions) {
-  checkboxOptions.style.display = "none";
-} else {
-  alert("Unable to find/stylise the selected element!");
+  const button = document.createElement("button");
+  console.log("Successfully created button.");
+  button.textContent = text;
+
+  // [can add more customisation here, such as setting an ID/attribute for the button (differentiating between image and text buttons)]
+
+  return button;
 }
 
+// Inserts element by appending to the provided parent location
 
+function insertChildElement(parentSelector, childSelector) {
 
+  const parentLocation = document.querySelector(parentSelector);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// home page functionality
-
-/** 
-
-var secondNavBar = document.querySelector(
-  "#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(4)"
-);
-
-if (secondNavBar) {
-  secondNavBar.style.display = "none";
-}
-
-var element2 = document.querySelector(
-  "body > app-root > app-home > div.header-fix > app-header > div.col-sm-12.h_container > div.text-center.h_main_div > div.row.col-sm-12.h_head2 > nav"
-);
-
-if (element2) {
-  element2.style.visibility = "hidden";
-}
-
-var element3 = document.querySelector(
-  "#divMain > div > app-main-page > div > div > div:nth-child(14)"
-);
-
-if (element3) {
-  element3.style.display = "none";
-}
-
-var element4 = document.querySelector(
-  "#divMain > div > app-main-page > div > div > div:nth-child(12)"
-);
-
-if (element4) {
-  element4.style.display = "none";
-}
-
-function createButton() {
-  var btn = document.createElement("button");
-  btn.textContent = "Info";
-  btn.classList.add("btn-primary-custom");
-  btn.setAttribute(
-    "toolData",
-    "LOWER BERTH/SR CITIZEN applies to males over 60 and females over 58. TATKAL applies to fixed ticket charges. PREMIUM TATKAL applies to dynamic ticket charges."
-  );
-  // btn.classList.add("fa-info-circle");
-  btn.addEventListener("click", function () {
-    alert("Info: This is a placeholder!");
-  });
-
-  return btn;
-}
-
-var path = document.querySelector(
-  "#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(3)"
-);
-
-if (path) {
-  var button = createButton();
-  path.appendChild(button);
-}
-
-var testElement = document.querySelector(
-  "#alert-section > div > div > ul > li:nth-child(2) > div > b > font"
-);
-
-if (testElement) {
-  testElement.setAttribute("color", "blue");
-} else {
-  console.log("Unable to find element. Please try a different selector.");
-}
-
-*/
-
-// test functionality to save form progress
-
-/** 
-
-chrome.storage.sync.get(['#destination > span > input'], function(result) {
-  
-  const userDataInput = document.querySelector('#ui-panel-12-content > div > div.ng-star-inserted > div.col-sm-11.col-xs-12.remove-padding.pull-left > div > app-passenger > div > div:nth-child(1) > span > div.Layer_7.col-sm-3.col-xs-12 > p-autocomplete > span > input');
-  if (userDataInput) {
-    alert("Successfully queried for element!");
-    userDataInput.value = result.userDataInput || "";
-
-    userDataInput.addEventListener('input', function() {
-      const userData = userDataInput.value;
-      chrome.storage.sync.set({'userData': userData});
-    });
+  if (parentLocation) {
+    parentLocation.appendChild(childSelector); // [could experiment with the usage of append() if we want to add multiple objects at once]
+    console.log("Successfully appended element to specified parent location.");
+  } else {
+    console.log("Unable to append element to the specified parent location.");
   }
-});
-
-*/
-
-// test functionality to transfer existing styles from an element to another
-
-/** 
-var targetElement = document.querySelector(
-  "#divMain > div > app-train-list > div.col-sm-9.col-xs-12 > div > div.ng-star-inserted > div:nth-child(1) > div.form-group.no-pad.col-xs-12.bull-back.border-all > app-train-avl-enq > div.col-xs-12 > div > span > span.ng-star-inserted > span"
-);
-
-alert("Info: This is a placeholder!");
-
-if (targetElement) {
-  console.log("Existing target element has been found.");
-
-  targetElement.classList.forEach(function (className) {
-    button.classList.add(className);
-  });
-
-  path.appendChild(button);
 }
 
-*/
+// Adds a custom styling class to a specified element
 
-// image transcoding functionality
+function addCustomClass(selector, customClass) {
 
-/**
-function transcodeImage(imageElement) {
-  const url = imageElement.src;
+  const modifiedElement = document.querySelector(selector); 
 
-  fetch(url)
-    .then((response) => response.blob())
-    .then((blob) => {
-      const transcodedBlob = processImage(blob);
-
-      const reader = new FileReader();
-      reader.readAsDataURL(transcodedBlob);
-
-      reader.onloadend = function () {
-        imageElement.src = reader.result;
-      };
-    })
-    .catch((error) => {
-      console.error(`Error fetching image:`, error);
-    });
+  if (modifiedElement) {
+    modifiedElement.classList.add(customClass);
+    console.log("Successfully modified the element's style.");
+  } else {
+    console.log("Unable to modify the element's style.");
+  }
 }
 
-function processImage(imageBlob) {
-  return imageBlob;
+// Removes an element either by changing display or visibility type
+
+function removeElement(selector, type) {
+
+  const selectedElement = document.querySelector(selector);
+  
+  if (selectedElement) {
+    if (type === "display") {
+      selectedElement.style.display = "none";
+      console.log("Element successfully found and removed.");
+    } else if (type === "visibility") {
+      selectedElement.style.visibility = "hidden";
+      console.log("Element successfully found and removed.");
+    } else {
+      console.log("Invalid type of element removal.");
+    }
+  }
 }
 
-const images = document.querySelectorAll("img");
+// Creates a tooltip box that pops up when hovered over the selected element
 
-images.forEach((image) => {
-  transcodeImage(image);
-});
+function createTooltip(selector, text) {
 
- */
+  const tooltipLocation = document.querySelector(selector);
+
+  if (tooltipLocation) {
+    const tooltip = document.createElement("div");
+    tooltip.textContent = text;
+    tooltip.classList.add("tooltip-box");
+
+    insertChildElement(selector, tooltip);
+
+    tooltipLocation.addEventListener("mouseover", displayTooltip); 
+    tooltipLocation.addEventListener("mouseout", hideTooltip);
+
+    function displayTooltip() {
+      tooltip.style.display = "block";
+    }
+
+    function hideTooltip() {
+      tooltip.style.display = "none";
+    }
+
+    console.log("Successfully created tooltip.");
+  } else {
+    console.log("Unable to find location and create tooltip.");
+  }
+}
+
+// Modifications required on the homepage
+// Using the highly detailed ">" selector path because it gives us the unique, specific location of our chosen element
+
+var checkboxOptions = "#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(4)";
+var secondaryNavbar = "body > app-root > app-home > div.header-fix > app-header > div.col-sm-12.h_container > div.text-center.h_main_div > div.row.col-sm-12.h_head2 > nav";
+var infoButtonLocation = "#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(3)";
+var advertBanner = "#divMain > div > app-main-page > div > div > div:nth-child(12)";
+var holidaysInfo = "#divMain > div > app-main-page > div > div > div:nth-child(14)";
+
+// Modifications required on the ticket page [will be adding more]
+
+var imgButtonLocation = "#divMain > div > app-train-list > div.col-sm-9.col-xs-12 > div > div.ng-star-inserted > div:nth-child(1) > div.form-group.no-pad.col-xs-12.bull-back.border-all > app-train-avl-enq > div.col-xs-12 > div > span";
+
+// Compilation of elements that need to be removed and subsequent removal
+
+var removeElementsDisplay = [checkboxOptions, advertBanner, holidaysInfo]; // [will need an appropriate system/pattern to gaguge whether element's display or visibility should be modified]
+
+for (let i = 0; i < removeElementsDisplay.length; i++) {
+  removeElement(removeElementsDisplay[i], "display");
+}
+
+var removeElementsVisibility = [secondaryNavbar];
+
+for (let i = 0; i < removeElementsVisibility.length; i++) {
+  removeElement(removeElementsVisibility[i], "visibility");
+}
+
+// Creating and styling information buttons 
+
+var infoButton = createButton("Info");
+insertChildElement(infoButtonLocation, infoButton);
+
+// [instead of manually copying the selector for newly created elements, we could search the variable name for "Button" and if it exists, append "> button" to the selector of its parent which we have already]
+
+infoButton = "#divMain > div > app-main-page > div > div > div.level_2.slanted-div > div.col-xs-12.remove-padding.tbis-box.tbis-box-pad > div:nth-child(1) > app-jp-input > div > form > div:nth-child(3) > button";
+addCustomClass(infoButton, "btn-primary");
+
+var imgButton = createButton("Image");
+insertChildElement(imgButtonLocation, imgButton);
+
+imgButton = "#divMain > div > app-train-list > div.col-sm-9.col-xs-12 > div > div.ng-star-inserted > div:nth-child(1) > div.form-group.no-pad.col-xs-12.bull-back.border-all > app-train-avl-enq > div.col-xs-12 > div > span > button";
+addCustomClass(imgButton, "btn-primary");
+
+var ticketingInfo = "LOWER BERTH/SR CITIZEN applies to males over 60 and females over 58. TATKAL applies to fixed ticket charges. PREMIUM TATKAL applies to dynamic ticket charges.";
+createTooltip(infoButton, ticketingInfo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

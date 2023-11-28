@@ -9,7 +9,12 @@
     },
     "permissions": [
         "scripting",
-        "activeTab"
+        "activeTab",
+        "webNavigation",
+        "tabs"
+    ],
+    "host_permissions": [
+        "https://www.irctc.co.in/nget/"
     ],
     "background": {
         "service_worker": "background.js"
