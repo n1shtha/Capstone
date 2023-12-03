@@ -39,4 +39,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   }
 });
 
- 
+// Functionality to google search (by image) the chosen train
+
+chrome.runtime.onMessage.addListener((request, sender) => {
+  if(sender.tab && request.action === "exploreButtonClicked") {
+    chrome.tabs.create({ url: request.query })
+    .then(() => { console.log("Successfully created new tab to display search results."); })
+    .catch((err) => console.log(err));
+  }
+});
+
