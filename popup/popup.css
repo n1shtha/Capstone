@@ -1,18 +1,48 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
+    font-family: Helvetica, sans-serif;
+    margin: 5;
     padding: 20px;
-    width: 200px;
+    width: 400px;
+    border-radius: 25px;
 }
 
 .popup-container {
-    width: 100%;
-    border: none;
+    box-sizing: content-box;
+    width: 400px;
+    border-radius: 25px;
+}
+
+
+.spanButton {
+    display: inline-block;
+}
+
+label {
+    display: inline;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 h1 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 13px;
+
+    font-style: italic;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 17px;
 }
 
 .checkbox-label {
@@ -24,9 +54,73 @@ h1 {
 .submit-button {
     padding: 5px 10px;
     margin-top: 10px;
+    margin-bottom: 15px;
     background-color: #469885;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
+
+.submit-button-danger {
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    background-color: #984646;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button-danger:hover {
+    background-color: #a36e6e;
+}
+
+.submit-button:hover {
+    background-color: #91afa8;
+}
+
+.dropbtn {
+    margin: 3px;
+    background-color: #4CAF50;
+    color: #469885;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    margin: 3px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+
+    margin: 3px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    margin: 3px;
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    margin: 3px;
+    display: block;
+}
+
+.button-container {
+    display: inline-block;
+}
+

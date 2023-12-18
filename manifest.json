@@ -5,7 +5,8 @@
     "version": "1.0",
     "action": {
         "default_icon": "test_icon.png",
-        "default_title": "Click to open Menu"
+        "default_title": "Click to open Menu",
+        "default_popup": "popup/popup.html"
     },
     "permissions": [
         "scripting",
@@ -14,7 +15,8 @@
         "tabs"
     ],
     "host_permissions": [
-        "https://www.irctc.co.in/nget/"
+        "https://www.irctc.co.in/nget/",
+        "https://www.bus.irctc.co.in/"
     ],
     "background": {
         "service_worker": "background.js"

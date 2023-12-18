@@ -7,31 +7,86 @@
 </head>
 
 <body>
-    <div class="popup-container">
-        <h1>Test Popup Menu</h1>
-        <button id="toggleButton" class="submit-button">Toggle</button>
+    <div class="popup-box">
+        <div class="popup-container">
+            <div>
+                <h1>Welcome to the usability intervention design extension!</h1>
+                <h2>Please pick from the following options and fill out the requisite fields to dynamically insert your
+                    changes.
+                </h2>
+                <br>
+            </div>
+            <div>
+                <h3>Add a helper button</h3>
+                <label for="buttonLocation">Location of helper button:</label>
+                <input type="text" id="buttonLocation">
+                <br>
+                <label for="buttonText">Text of helper button:</label>
+                <input type="text" id="buttonText">
+                <br>
+                <label for="granularityType">Level of granularity:</label>
+                <input type="radio" id="selector" name="buttonGranularityType" value="Selector">
+                <label for="selector">Selector</label>
+                <input type="radio" id="ID" name="buttonGranularityType" value="ID">
+                <label for="ID">ID</label>
+                <input type="radio" id="class" name="buttonGranularityType" value="Class">
+                <label for="class">Class</label>
+                <br>
+                <button id="buttonConfirmation" class="submit-button">Add button</button>
+            </div>
+            <div>
+                <h3>Remove an element</h3>
+                <label for="removalInput">Location of element to be removed:</label>
+                <input type="text" id="removalInput">
+                <br>
+                <label for="granularityType">Level of granularity:</label>
+                <input type="radio" id="selector" name="removalGranularityType" value="Selector">
+                <label for="selector">Selector</label>
+                <input type="radio" id="ID" name="removalGranularityType" value="ID">
+                <label for="ID">ID</label>
+                <input type="radio" id="class" name="removalGranularityType" value="Class">
+                <label for="class">Class</label>
+                <br>
+                <br>
+                <label for="removalType">Type of removal:</label>
+                <input type="radio" id="display" name="removalType" value="Display">
+                <label for="display">Display</label>
+                <input type="radio" id="visibility" name="removalType" value="Visibility">
+                <label for="visibility">Visibility</label>
+                <br>
+                <span class="button-container">
+                    <button id="removalConfirmation" class="submit-button">Remove</button>
+                </span>
+            </div>
+            <div>
+                <h3>Add a tooltip</h3>
+                <label for="tooltipLocation">Location of tooltip:</label>
+                <input type="text" id="tooltipLocation">
+                <br>
+                <label for="tooltipText">Text in tooltip:</label>
+                <input type="text" id="tooltipText">
+                <br>
+                <button id="tooltipConfirmation" class="submit-button">Add tooltip</button>
+            </div>
+            <div>
+                <h3>Add an image search</h3>
+                <label for="searchLocation">Location of image search:</label>
+                <input type="text" id="imageSearchLocation">
+                <br>
+                <button id="imageSearchConfirmation" class="submit-button">Add image search</button>
+            </div>
+            <div>
+                <h3>Transfer styles</h3>
+                <label for="sourceElement">Element to transfer styles from:</label>
+                <input type="text" id="sourceElementLocation">
+                <br>
+                <label for="destinationElement">Element to transfer styles to:</label>
+                <input type="text" id="destinationElementLocation">
+                <br>
+                <button id="styleTransferConfirmation" class="submit-button">Transfer styles</button>
+            </div>
+        </div>
     </div>
 </body>
 
 </html>
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <link rel = "stylesheet" href = "popup.css">
-    </head>
-    <body>
-        <div class = "popup-container">
-            <h2>Testing Popup Menu</h2>
-            <form>
-                <input type = "checkbox" id = "Image Transcoding" value = "Image Transcoding"/>
-                <label class = "checkbox-label">Image Transcoding</label> <br>
-                <input type = "checkbox" id = "AI Summarisation" value = "AI Summarisation"/>
-                <label class = "checkbox-label">AI Summarisation</label> <br>
-                <input type = "submit" value = "Save" class = "submit-button">
-            </form>
-        </div>
-    </body>
-</html> -->
