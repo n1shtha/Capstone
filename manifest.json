@@ -1,11 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "IRCTC Extension",
-    "description": "Version 1.0",
-    "version": "1.0",
+    "name": "ProtoFlow - UI Interventions for eGov",
+    "description": "Version 2.0",
+    "version": "2.0",
     "action": {
         "default_icon": "test_icon.png",
-        "default_title": "Click to open Menu",
+        "default_title": "Open ProtoFlow for eGov",
         "default_popup": "popup/popup.html"
     },
     "permissions": [
@@ -20,5 +20,13 @@
     ],
     "background": {
         "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": ["<all_urls>"]
     }
+  ]
 }

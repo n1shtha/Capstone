@@ -1,15 +1,197 @@
 body {
-    font-family: Helvetica, sans-serif;
-    margin: 5;
-    padding: 20px;
-    width: 400px;
-    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #F7F7F7;
 }
 
 .popup-container {
     box-sizing: content-box;
     width: 400px;
-    border-radius: 25px;
+    overflow: scroll;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: #E4E4E4;
+    max-width: 400px;
+    height: 92px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    background-image: url("assets/Footer.jpg");
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.footer-right {
+    display: flex;
+    gap: 10px;
+}
+
+.landing {
+    height: 164px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px 20px 0px;
+}
+
+.landing img {
+    width: 52px;
+    height: 52px;
+}
+
+p {
+    color: #7E7E7E;
+    font-size: 12px;
+}
+
+.intervention {
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #D7D5D5;
+}
+
+.intervention-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 20px;
+}
+
+.intervention-text {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.intervention-title {
+    display: flex;
+    align-items: center;
+}
+
+.intervention-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.intervention-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 0; 
+}
+
+.intervention-content div {
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 5px;
+}
+
+.intervention-content label {
+    flex: 0 0 auto; 
+    margin-right: 10px;
+}
+
+.intervention-content input[type="text"] {
+    flex: 1; 
+    padding: 2px;
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+.intervention-content .submit-button {
+    margin: 10px 0; 
+    padding: 10px 15px;
+    background-color: #252425;
+    opacity: 90%;
+    color: #F7F7F7; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+.intervention-content .submit-button:hover, .expand-button:hover, .open-modal:hover, .footer-left:hover {
+    background-color: #504e50; 
+}
+
+.expand-button, .open-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px; 
+    height: 33px; 
+    border-radius: 10px;
+    background-color: #252425;
+    opacity: 90%;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+}
+
+.footer-left {
+    border-radius: 10px;
+    background-color: #252425;
+    color: #F7F7F7;
+    opacity: 90%;
+    width: auto;
+    padding: 0 30px 0;
+    height: 33px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative; /* Allows positioning the close button inside */
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+}
+
+.close-modal {
+    position: absolute; /* Ensures the close button stays at the top-right corner */
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    background: none;
+    border: none;
 }
 
 
@@ -41,44 +223,14 @@ h2 {
 }
 
 h3 {
-    font-weight: 600;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .checkbox-label {
     display: inline-block;
     margin: 5px;
     font-size: 14px;
-}
-
-.submit-button {
-    padding: 5px 10px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    background-color: #469885;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.submit-button-danger {
-    padding: 5px 10px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    background-color: #984646;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.submit-button-danger:hover {
-    background-color: #a36e6e;
-}
-
-.submit-button:hover {
-    background-color: #91afa8;
 }
 
 .dropbtn {
@@ -120,7 +272,4 @@ h3 {
     display: block;
 }
 
-.button-container {
-    display: inline-block;
-}
 
